@@ -77,7 +77,6 @@ class MainActivity : AppCompatActivity() {
             try {
                 when (aIntent?.action) {
                     BroadcastVeiculosEstacionados.veiculosEstacionados -> {
-//                        adapter.notifyDataSetChanged()
                         setupAdapter()
                     }
                 }
