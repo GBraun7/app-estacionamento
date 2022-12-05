@@ -20,23 +20,9 @@ class EstacionarVeiculoFragment(private val tipoVeiculo: String) : DialogFragmen
 
     private lateinit var binding: FragmentEstacionarVeiculoBinding
 
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        binding = FragmentEstacionarVeiculoBinding.inflate(inflater, container, false)
-//        return binding.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        setOnClickBtnEstacionar()
-//    }
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = FragmentEstacionarVeiculoBinding.inflate(LayoutInflater.from(requireContext()))
         val alerDialog = MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertIndicationDialogRounded).setView(binding.root)
-//        showDialog(alerDialog)
         setOnClickBtnEstacionar()
         return alerDialog.create()
     }
@@ -49,21 +35,21 @@ class EstacionarVeiculoFragment(private val tipoVeiculo: String) : DialogFragmen
                     val moto = Moto(requireContext()).apply {
                         modelo = binding.editModelo.text.toString()
                         placa = binding.editPlaca.text.toString()
-                        estacionarVeiculo(Moto(requireContext()))
+                        estacionarVeiculo()
                     }
                 }
                 VEICULO_TIPO_CARRO -> {
-                    val carro = Carro(requireContext()).apply {
+                    Carro(requireContext()).apply {
                         modelo = binding.editModelo.text.toString()
                         placa = binding.editPlaca.text.toString()
-                        estacionarVeiculo(Carro(requireContext()))
+                        estacionarVeiculo()
                     }
                 }
                 VEICULO_TIPO_VAN -> {
-                    val van = Van(requireContext()).apply {
+                    Van(requireContext()).apply {
                         modelo = binding.editModelo.text.toString()
                         placa = binding.editPlaca.text.toString()
-                        estacionarVeiculo(Van(requireContext()))
+                        estacionarVeiculo()
                     }
                 }
             }

@@ -13,6 +13,7 @@ import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_VAN
 import com.braun.gustavo.estacionamento.databinding.ActivityMainBinding
 import com.braun.gustavo.estacionamento.entity.Moto
 import com.braun.gustavo.estacionamento.entity.Veiculo
+import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosDTO
 import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosRepository
 
 class MainActivity : AppCompatActivity() {
@@ -20,13 +21,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: VeiculosEstacionadosAdapter
     private val mMyBroadCastReceiver = VeiculosEstacionadosBroadcastReceiver()
-    private var vagasCarro = 10
-    private var vagasMoto = 5
-    private var vagasVan = 3
 
-    // TODO: fazer o tipo da vaga: grande, carro, moto
-
-
+    // TODO: contador de vagas
+    // TODO: Remover veiculo do estacionamento
+    //
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,19 +33,11 @@ class MainActivity : AppCompatActivity() {
         setOnClickBtnMotorcycle()
         setOnClickBtnCar()
         setOnClickBtnVan()
-
-//        val veiculo: ArrayList<Veiculo> = ArrayList()
-//        veiculo.add(Carro(this).apply {
-//            modelo = "GOl"
-//            placa = "AWS123"
-//        })
-
-
-
         setupAdapter()
     }
 
     private fun setupAdapter() {
+        setVacancyNumbers()
         val veiculo = VeiculosEstacionadosRepository(this).getVeiculosEstacionados()
         adapter = VeiculosEstacionadosAdapter(veiculo)
         binding.recyclerViewVeiculosEstacionados.adapter = adapter
@@ -70,6 +60,17 @@ class MainActivity : AppCompatActivity() {
         binding.constraintLayoutVan.setOnClickListener {
             EstacionarVeiculoFragment(VEICULO_TIPO_VAN).show(supportFragmentManager, EstacionarVeiculoFragment.FRAGMENT_TAG)
         }
+    }
+
+    private fun setVacancyNumbers() {
+        val veiculosEstacionadosDTO = VeiculosEstacionadosRepository(this).getVeiculosEstacionadosDTO()
+        binding.textViewVagasCarrosDisponveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
+        binding.textViewVagasCarrosOcupados.text = "Ocupadas: " + (5 - veiculosEstacionadosDTO.vagas_carro).toString()
+        binding.textViewVagasMotoDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
+        binding.textViewVagasMotoOcupadas.text = "Ocupadas: " + (3 - veiculosEstacionadosDTO.vagas_carro).toString()
+        binding.textViewVagasVanDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
+        binding.textViewVagasVanOcupadas.text = "Ocupadas: " + (1 - veiculosEstacionadosDTO.vagas_carro).toString()
+
     }
 
     inner class VeiculosEstacionadosBroadcastReceiver : BroadcastReceiver() {

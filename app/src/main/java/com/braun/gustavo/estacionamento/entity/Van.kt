@@ -9,7 +9,7 @@ class Van(context: Context) : Veiculo() {
     private var vagaUtilizada: String = VeiculoConstants.VAGA_MOTO
     private var repository = VeiculosEstacionadosRepository(context)
 
-    override fun estacionarVeiculo(veiculo: Veiculo) {
+    override fun estacionarVeiculo() {
         val veiculosEstacionados = repository.getVeiculosEstacionadosDTO()
         if (veiculosEstacionados.vagas_grande != 0) {
             veiculosEstacionados.vans_estacionadas.add(this)
@@ -26,16 +26,16 @@ class Van(context: Context) : Veiculo() {
         repository.storeVeiculosEstacionados(veiculosEstacionados)
     }
 
-    override fun removerVeiculo(veiculo: Veiculo) {
+    override fun removerVeiculo() {
         val veiculosEstacionados = repository.getVeiculosEstacionadosDTO()
         when (vagaUtilizada) {
             VeiculoConstants.VAGA_GRANDE -> {
                 veiculosEstacionados.vagas_grande++
-                veiculosEstacionados.vans_estacionadas.remove(veiculo)
+                veiculosEstacionados.vans_estacionadas.remove(this)
             }
             VeiculoConstants.VAGA_CARRO -> {
                 veiculosEstacionados.vagas_carro = +3
-                veiculosEstacionados.carros_estacionados.remove(veiculo)
+                veiculosEstacionados.vans_estacionadas.remove(this)
             }
         }
         repository.storeVeiculosEstacionados(veiculosEstacionados)

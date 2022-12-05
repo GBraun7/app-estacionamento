@@ -8,8 +8,8 @@ import com.braun.gustavo.estacionamento.entity.Veiculo
 class VeiculosEstacionadosViewHolder(private val binding: RecyclerViewVeiculosEstacionadosBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun fill(veiculo: Veiculo) {
-        binding.textViewModelo.text = veiculo.modelo
-        binding.textViewPlaca.text = veiculo.placa
+        val infoVeiculo = veiculo.modelo + " placa: " + veiculo.placa
+        binding.textViewModelo.text = infoVeiculo
         binding.imageViewVeiculo.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.moto))
     }
 }

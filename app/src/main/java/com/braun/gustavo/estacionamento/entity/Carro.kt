@@ -11,7 +11,7 @@ class Carro(context: Context): Veiculo() {
     @Transient
     private var repository = VeiculosEstacionadosRepository(context)
 
-    override fun estacionarVeiculo(veiculo: Veiculo) {
+    override fun estacionarVeiculo() {
         val veiculosEstacionados = repository.getVeiculosEstacionadosDTO()
         if (veiculosEstacionados.vagas_carro != 0) {
             veiculosEstacionados.carros_estacionados.add(this)
@@ -29,7 +29,7 @@ class Carro(context: Context): Veiculo() {
     }
 
 
-    override fun removerVeiculo(veiculo: Veiculo) {
+    override fun removerVeiculo() {
         val veiculosEstacionados = repository.getVeiculosEstacionadosDTO()
         when (vagaUtilizada) {
             VeiculoConstants.VAGA_CARRO -> {
