@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setVacancyNumbers() {
         val veiculosEstacionadosDTO = VeiculosEstacionadosRepository(this).getVeiculosEstacionadosDTO()
-        binding.textViewVagasCarrosDisponveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
+        binding.textViewVagasCarrosDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
         binding.textViewVagasCarrosOcupados.text = "Ocupadas: " + (5 - veiculosEstacionadosDTO.vagas_carro).toString()
         binding.textViewVagasMotoDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
         binding.textViewVagasMotoOcupadas.text = "Ocupadas: " + (3 - veiculosEstacionadosDTO.vagas_carro).toString()
