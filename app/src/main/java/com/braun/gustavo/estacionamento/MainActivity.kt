@@ -22,9 +22,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: VeiculosEstacionadosAdapter
     private val mMyBroadCastReceiver = VeiculosEstacionadosBroadcastReceiver()
 
-    // TODO: contador de vagas
-    // TODO: Remover veiculo do estacionamento
-    //
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -64,13 +61,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setVacancyNumbers() {
         val veiculosEstacionadosDTO = VeiculosEstacionadosRepository(this).getVeiculosEstacionadosDTO()
+        binding.textViewTotalVagas.text = "Total de vagas 9"
         binding.textViewVagasCarrosDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
         binding.textViewVagasCarrosOcupados.text = "Ocupadas: " + (5 - veiculosEstacionadosDTO.vagas_carro).toString()
-        binding.textViewVagasMotoDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
-        binding.textViewVagasMotoOcupadas.text = "Ocupadas: " + (3 - veiculosEstacionadosDTO.vagas_carro).toString()
-        binding.textViewVagasVanDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
-        binding.textViewVagasVanOcupadas.text = "Ocupadas: " + (1 - veiculosEstacionadosDTO.vagas_carro).toString()
-
+        binding.textViewVagasMotoDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_moto.toString()
+        binding.textViewVagasMotoOcupadas.text = "Ocupadas: " + (3 - veiculosEstacionadosDTO.vagas_moto).toString()
+        binding.textViewVagasVanDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_grande.toString()
+        binding.textViewVagasVanOcupadas.text = "Ocupadas: " + (1 - veiculosEstacionadosDTO.vagas_grande).toString()
     }
 
     inner class VeiculosEstacionadosBroadcastReceiver : BroadcastReceiver() {

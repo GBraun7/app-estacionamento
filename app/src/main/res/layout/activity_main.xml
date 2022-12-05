@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toStartOf="@+id/constraintLayoutMoto"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalVagas">
 
         <ImageView
             android:id="@+id/imageView"
@@ -113,7 +113,7 @@
         android:text="Vagas de moto"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayoutMoto"
-        app:layout_constraintStart_toEndOf="@+id/constraintLayoutCarro"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutMoto"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMoto" />
 
     <TextView
@@ -203,5 +203,16 @@
         app:layout_constraintEnd_toEndOf="@+id/constraintLayoutVan"
         app:layout_constraintStart_toStartOf="@+id/constraintLayoutVan"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutVan" />
+
+    <TextView
+        android:id="@+id/textViewTotalVagas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Total de vagas"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

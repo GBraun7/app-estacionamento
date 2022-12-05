@@ -1,10 +1,11 @@
 package com.braun.gustavo.estacionamento
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_CARRO
 import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_MOTO
@@ -13,8 +14,8 @@ import com.braun.gustavo.estacionamento.databinding.FragmentEstacionarVeiculoBin
 import com.braun.gustavo.estacionamento.entity.Carro
 import com.braun.gustavo.estacionamento.entity.Moto
 import com.braun.gustavo.estacionamento.entity.Van
-import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosRepository
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 class EstacionarVeiculoFragment(private val tipoVeiculo: String) : DialogFragment() {
 
@@ -24,37 +25,56 @@ class EstacionarVeiculoFragment(private val tipoVeiculo: String) : DialogFragmen
         binding = FragmentEstacionarVeiculoBinding.inflate(LayoutInflater.from(requireContext()))
         val alerDialog = MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertIndicationDialogRounded).setView(binding.root)
         setOnClickBtnEstacionar()
+        setImageVeiculo()
         return alerDialog.create()
+    }
+
+    private fun setImageVeiculo() {
+        when (tipoVeiculo) {
+            VEICULO_TIPO_MOTO ->
+                binding.imageVeiculo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.moto))
+            VEICULO_TIPO_CARRO ->
+                binding.imageVeiculo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.carro))
+            VEICULO_TIPO_VAN ->
+                binding.imageVeiculo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.van))
+        }
     }
 
     private fun setOnClickBtnEstacionar() {
         binding.buttonEstacionar.setOnClickListener {
-            val veiculosEstacionados = VeiculosEstacionadosRepository(requireContext()).getVeiculosEstacionadosDTO()
-            when (tipoVeiculo) {
-                VEICULO_TIPO_MOTO -> {
-                    val moto = Moto(requireContext()).apply {
-                        modelo = binding.editModelo.text.toString()
-                        placa = binding.editPlaca.text.toString()
-                        estacionarVeiculo()
+            try {
+
+                when (tipoVeiculo) {
+                    VEICULO_TIPO_MOTO -> {
+                        Moto().apply {
+                            modelo = binding.editModelo.text.toString()
+                            placa = binding.editPlaca.text.toString()
+                            estacionarVeiculo(requireContext())
+                        }
+                    }
+                    VEICULO_TIPO_CARRO -> {
+                        Carro().apply {
+                            modelo = binding.editModelo.text.toString()
+                            placa = binding.editPlaca.text.toString()
+                            estacionarVeiculo(requireContext())
+                        }
+                    }
+                    VEICULO_TIPO_VAN -> {
+                        Van().apply {
+                            modelo = binding.editModelo.text.toString()
+                            placa = binding.editPlaca.text.toString()
+                            estacionarVeiculo(requireContext())
+                        }
                     }
                 }
-                VEICULO_TIPO_CARRO -> {
-                    Carro(requireContext()).apply {
-                        modelo = binding.editModelo.text.toString()
-                        placa = binding.editPlaca.text.toString()
-                        estacionarVeiculo()
-                    }
-                }
-                VEICULO_TIPO_VAN -> {
-                    Van(requireContext()).apply {
-                        modelo = binding.editModelo.text.toString()
-                        placa = binding.editPlaca.text.toString()
-                        estacionarVeiculo()
-                    }
-                }
+                BroadcastVeiculosEstacionados(requireContext()).emitiBroadcastVeiculoEstacionado()
+                dismiss()
+            } catch (e: Exception) {
+                AlertDialog.Builder(context)
+                    .setTitle("Atenção")
+                    .setMessage(e.message)
+                    .show()
             }
-            BroadcastVeiculosEstacionados(requireContext()).emitiBroadcastVeiculoEstacionado()
-            dismiss()
         }
     }
 
