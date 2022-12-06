@@ -1,49 +1,50 @@
-package com.braun.gustavo.estacionamento.entity
+package com.braun.gustavo.estacionamento.veiculo
 
 import android.content.Context
-import com.braun.gustavo.estacionamento.VeiculoConstants.VAGA_CARRO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VAGA_GRANDE
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_VAN
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VAGA_CARRO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VAGA_GRANDE
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_CARRO
 import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosRepository
 
-class Van : Veiculo() {
+class Carro : Veiculo() {
 
-    private var vagaUtilizada: String = VAGA_GRANDE
+    var vagaUtilizada: String = VAGA_CARRO
 
     override fun estacionarVeiculo(context: Context) {
         val repository = VeiculosEstacionadosRepository(context)
         val veiculosEstacionados = repository.getVeiculosEstacionadosDTO()
-        if (veiculosEstacionados.vagas_grande != 0) {
-            veiculosEstacionados.vans_estacionadas.add(this)
+        if (veiculosEstacionados.vagas_carro != 0) {
+            veiculosEstacionados.carros_estacionados.add(this)
+            veiculosEstacionados.vagas_carro--
+            vagaUtilizada = VAGA_CARRO
+        } else if (veiculosEstacionados.vagas_grande != 0) {
+            veiculosEstacionados.carros_estacionados.add(this)
             veiculosEstacionados.vagas_grande--
             vagaUtilizada = VAGA_GRANDE
-        } else if (veiculosEstacionados.vagas_carro >= 3) {
-            veiculosEstacionados.vans_estacionadas.add(this)
-            veiculosEstacionados.vagas_carro -= 3
-            vagaUtilizada = VAGA_CARRO
         } else {
             throw Exception("Não ha mais vaga disponivel no estacionamento")
         }
         repository.storeVeiculosEstacionados(veiculosEstacionados)
     }
 
+
     override fun removerVeiculo(context: Context) {
         val repository = VeiculosEstacionadosRepository(context)
         val veiculosEstacionados = repository.getVeiculosEstacionadosDTO()
-        for (van: Veiculo in veiculosEstacionados.vans_estacionadas) {
-            if (van.placa == this.placa) {
-                veiculosEstacionados.vans_estacionadas.remove(van)
+        for (carro: Veiculo in veiculosEstacionados.carros_estacionados) {
+            if (carro.placa == this.placa) {
+                veiculosEstacionados.carros_estacionados.remove(carro)
                 break
             }
         }
         when (vagaUtilizada) {
+            VAGA_CARRO -> veiculosEstacionados.vagas_carro++
             VAGA_GRANDE -> veiculosEstacionados.vagas_grande++
-            VAGA_CARRO -> veiculosEstacionados.vagas_carro += 3
         }
         repository.storeVeiculosEstacionados(veiculosEstacionados)
     }
 
     override fun tipoVeiculo(): String {
-        return VEICULO_TIPO_VAN
+        return VEICULO_TIPO_CARRO
     }
 }

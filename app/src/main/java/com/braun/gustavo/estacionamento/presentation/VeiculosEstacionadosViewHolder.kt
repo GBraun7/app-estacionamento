@@ -1,12 +1,14 @@
-package com.braun.gustavo.estacionamento
+package com.braun.gustavo.estacionamento.presentation
 
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_CARRO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_MOTO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_VAN
+import com.braun.gustavo.estacionamento.utils.BroadcastVeiculosEstacionados
+import com.braun.gustavo.estacionamento.R
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_CARRO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_MOTO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_VAN
 import com.braun.gustavo.estacionamento.databinding.RecyclerViewVeiculosEstacionadosBinding
-import com.braun.gustavo.estacionamento.entity.Veiculo
+import com.braun.gustavo.estacionamento.veiculo.Veiculo
 
 class VeiculosEstacionadosViewHolder(private val binding: RecyclerViewVeiculosEstacionadosBinding) : RecyclerView.ViewHolder(binding.root) {
 

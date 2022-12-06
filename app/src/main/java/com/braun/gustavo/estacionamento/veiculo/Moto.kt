@@ -1,10 +1,10 @@
-package com.braun.gustavo.estacionamento.entity
+package com.braun.gustavo.estacionamento.veiculo
 
 import android.content.Context
-import com.braun.gustavo.estacionamento.VeiculoConstants.VAGA_CARRO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VAGA_GRANDE
-import com.braun.gustavo.estacionamento.VeiculoConstants.VAGA_MOTO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_MOTO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VAGA_CARRO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VAGA_GRANDE
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VAGA_MOTO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_MOTO
 import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosRepository
 
 class Moto : Veiculo() {

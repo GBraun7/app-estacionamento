@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="20dp"
-    tools:context=".EstacionarVeiculoFragment">
+    tools:context=".presentation.EstacionarVeiculoFragment">
 
     <TextView
         android:id="@+id/textView"

@@ -1,17 +1,19 @@
-package com.braun.gustavo.estacionamento
+package com.braun.gustavo.estacionamento.presentation
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_CARRO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_MOTO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_VAN
+import com.braun.gustavo.estacionamento.utils.BroadcastVeiculosEstacionados
+import com.braun.gustavo.estacionamento.R
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_CARRO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_MOTO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_VAN
 import com.braun.gustavo.estacionamento.databinding.FragmentEstacionarVeiculoBinding
-import com.braun.gustavo.estacionamento.entity.Carro
-import com.braun.gustavo.estacionamento.entity.Moto
-import com.braun.gustavo.estacionamento.entity.Van
+import com.braun.gustavo.estacionamento.veiculo.Carro
+import com.braun.gustavo.estacionamento.veiculo.Moto
+import com.braun.gustavo.estacionamento.veiculo.Van
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 

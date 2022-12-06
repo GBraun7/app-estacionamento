@@ -1,10 +1,10 @@
-package com.braun.gustavo.estacionamento
+package com.braun.gustavo.estacionamento.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.braun.gustavo.estacionamento.databinding.RecyclerViewVeiculosEstacionadosBinding
-import com.braun.gustavo.estacionamento.entity.Veiculo
+import com.braun.gustavo.estacionamento.veiculo.Veiculo
 
 class VeiculosEstacionadosAdapter(private val veiculo: List<Veiculo>) : RecyclerView.Adapter<VeiculosEstacionadosViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VeiculosEstacionadosViewHolder {

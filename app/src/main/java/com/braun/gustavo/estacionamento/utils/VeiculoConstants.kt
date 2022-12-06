@@ -1,4 +1,4 @@
-package com.braun.gustavo.estacionamento
+package com.braun.gustavo.estacionamento.utils
 
 object VeiculoConstants {
     const val VEICULO_TIPO_MOTO = "MOTO"

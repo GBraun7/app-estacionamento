@@ -1,4 +1,4 @@
-package com.braun.gustavo.estacionamento
+package com.braun.gustavo.estacionamento.presentation
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -7,9 +7,10 @@ import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_CARRO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_MOTO
-import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_VAN
+import com.braun.gustavo.estacionamento.utils.BroadcastVeiculosEstacionados
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_CARRO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_MOTO
+import com.braun.gustavo.estacionamento.utils.VeiculoConstants.VEICULO_TIPO_VAN
 import com.braun.gustavo.estacionamento.databinding.ActivityMainBinding
 import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosRepository
 

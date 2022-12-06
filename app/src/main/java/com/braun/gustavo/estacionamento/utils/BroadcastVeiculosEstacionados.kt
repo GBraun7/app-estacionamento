@@ -1,4 +1,4 @@
-package com.braun.gustavo.estacionamento
+package com.braun.gustavo.estacionamento.utils
 
 import android.content.Context
 import android.content.Intent

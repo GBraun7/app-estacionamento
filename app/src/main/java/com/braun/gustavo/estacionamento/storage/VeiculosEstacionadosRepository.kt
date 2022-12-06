@@ -1,10 +1,10 @@
 package com.braun.gustavo.estacionamento.storage
 
 import android.content.Context
-import com.braun.gustavo.estacionamento.entity.Carro
-import com.braun.gustavo.estacionamento.entity.Moto
-import com.braun.gustavo.estacionamento.entity.Van
-import com.braun.gustavo.estacionamento.entity.Veiculo
+import com.braun.gustavo.estacionamento.veiculo.Carro
+import com.braun.gustavo.estacionamento.veiculo.Moto
+import com.braun.gustavo.estacionamento.veiculo.Van
+import com.braun.gustavo.estacionamento.veiculo.Veiculo
 
 class VeiculosEstacionadosRepository(val context: Context) {
 

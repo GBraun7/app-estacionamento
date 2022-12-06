@@ -1,4 +1,4 @@
-package com.braun.gustavo.estacionamento.entity
+package com.braun.gustavo.estacionamento.veiculo
 
 import android.content.Context
 
