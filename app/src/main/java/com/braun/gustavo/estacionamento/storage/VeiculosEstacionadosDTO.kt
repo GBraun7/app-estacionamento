@@ -12,5 +12,4 @@ data class VeiculosEstacionadosDTO(
     val carros_estacionados: ArrayList<Carro> = ArrayList(),
     val motos_estacionadas: ArrayList<Moto> = ArrayList(),
     val vans_estacionadas: ArrayList<Van> = ArrayList(),
-//    val veiculos: ArrayList<Veiculo> = ArrayList()
 )

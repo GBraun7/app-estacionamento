@@ -19,7 +19,6 @@ class Carro : Veiculo() {
             vagaUtilizada = VAGA_CARRO
         } else if (veiculosEstacionados.vagas_grande != 0) {
             veiculosEstacionados.carros_estacionados.add(this)
-//            veiculosEstacionados.vans_estacionadas.add(veiculo)
             veiculosEstacionados.vagas_grande--
             vagaUtilizada = VAGA_GRANDE
         } else {

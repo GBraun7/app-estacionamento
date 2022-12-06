@@ -2,9 +2,7 @@ package com.braun.gustavo.estacionamento
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_CARRO
@@ -22,7 +20,7 @@ class EstacionarVeiculoFragment(private val tipoVeiculo: String) : DialogFragmen
     private lateinit var binding: FragmentEstacionarVeiculoBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        binding = FragmentEstacionarVeiculoBinding.inflate(LayoutInflater.from(requireContext()))
+        binding = FragmentEstacionarVeiculoBinding.inflate(layoutInflater)
         val alerDialog = MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertIndicationDialogRounded).setView(binding.root)
         setOnClickBtnEstacionar()
         setImageVeiculo()

@@ -11,9 +11,6 @@ import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_CARRO
 import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_MOTO
 import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_VAN
 import com.braun.gustavo.estacionamento.databinding.ActivityMainBinding
-import com.braun.gustavo.estacionamento.entity.Moto
-import com.braun.gustavo.estacionamento.entity.Veiculo
-import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosDTO
 import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosRepository
 
 class MainActivity : AppCompatActivity() {
@@ -61,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setVacancyNumbers() {
         val veiculosEstacionadosDTO = VeiculosEstacionadosRepository(this).getVeiculosEstacionadosDTO()
-        binding.textViewTotalVagas.text = "Total de vagas 9"
+        binding.textViewTotalVagas.text = "Total de 9 vagas no estacionamento"
         binding.textViewVagasCarrosDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_carro.toString()
         binding.textViewVagasCarrosOcupados.text = "Ocupadas: " + (5 - veiculosEstacionadosDTO.vagas_carro).toString()
         binding.textViewVagasMotoDisponiveis.text = "Disponível: " + veiculosEstacionadosDTO.vagas_moto.toString()

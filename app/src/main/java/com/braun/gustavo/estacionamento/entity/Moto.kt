@@ -7,7 +7,7 @@ import com.braun.gustavo.estacionamento.VeiculoConstants.VAGA_MOTO
 import com.braun.gustavo.estacionamento.VeiculoConstants.VEICULO_TIPO_MOTO
 import com.braun.gustavo.estacionamento.storage.VeiculosEstacionadosRepository
 
-class Moto() : Veiculo() {
+class Moto : Veiculo() {
 
     var vagaUtilizada: String = VAGA_MOTO
 

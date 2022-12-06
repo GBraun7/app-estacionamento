@@ -18,15 +18,6 @@ class VeiculosEstacionadosStorage(val context: Context) {
             sharedPrefs = context.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE)
     }
 
-//    private fun VeiculosEstacionadosStorage(context: Context) {
-//        sharedPrefs = context.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE)
-//    }
-
-    private fun getProfileMapType(): Type? {
-        return object : TypeToken<ConcurrentLinkedQueue<VeiculosEstacionadosDTO?>?>() {}.getType()
-    }
-
-
     @Synchronized
     fun getEditor(): SharedPreferences.Editor {
         return sharedPrefs!!.edit()
