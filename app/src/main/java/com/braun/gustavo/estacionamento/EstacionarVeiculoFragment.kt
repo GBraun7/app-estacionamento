@@ -41,7 +41,6 @@ class EstacionarVeiculoFragment(private val tipoVeiculo: String) : DialogFragmen
     private fun setOnClickBtnEstacionar() {
         binding.buttonEstacionar.setOnClickListener {
             try {
-
                 when (tipoVeiculo) {
                     VEICULO_TIPO_MOTO -> {
                         Moto().apply {

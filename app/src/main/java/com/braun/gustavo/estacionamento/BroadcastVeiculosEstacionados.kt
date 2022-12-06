@@ -6,12 +6,12 @@ import android.content.Intent
 class BroadcastVeiculosEstacionados(val context: Context) {
 
     companion object {
-        const val veiculosEstacionados = "estacionar-veiculo"
+        const val updateVeiculosEstacionados = "update-veiculos_estacionados"
     }
 
     fun emitiBroadcastVeiculoEstacionado() {
         val intent = Intent()
-        intent.action = veiculosEstacionados
+        intent.action = updateVeiculosEstacionados
         context.sendBroadcast(intent)
     }
 }

@@ -13,11 +13,11 @@ class VeiculosEstacionadosRepository(val context: Context) {
         return veiculosEstacionadosDTO
     }
 
-    fun getVeiculosEstacionados(): ArrayList<Veiculo> {
+    fun getListVeiculosEstacionados(): ArrayList<Veiculo> {
         val veiculosEstacionadosDTO = VeiculosEstacionadosStorage(context).get()
         val veiculos: ArrayList<Veiculo> = ArrayList()
-        for (motos: Moto in veiculosEstacionadosDTO.motos_estacionadas) {
-            veiculos.add(motos)
+        for (moto: Moto in veiculosEstacionadosDTO.motos_estacionadas) {
+            veiculos.add(moto)
         }
         for (carro: Carro in veiculosEstacionadosDTO.carros_estacionados) {
             veiculos.add(carro)

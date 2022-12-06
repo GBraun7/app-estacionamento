@@ -21,10 +21,10 @@ class VeiculosEstacionadosViewHolder(private val binding: RecyclerViewVeiculosEs
             VEICULO_TIPO_VAN ->
                 binding.imageViewVeiculo.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.van))
         }
-        setBtnRemove(veiculo)
+        setClickBtnRemove(veiculo)
     }
 
-    private fun setBtnRemove(veiculo: Veiculo) {
+    private fun setClickBtnRemove(veiculo: Veiculo) {
         binding.buttonRemove.setOnClickListener {
             veiculo.removerVeiculo(itemView.context)
             BroadcastVeiculosEstacionados(itemView.context).emitiBroadcastVeiculoEstacionado()

@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupAdapter() {
         setVacancyNumbers()
-        val veiculo = VeiculosEstacionadosRepository(this).getVeiculosEstacionados()
-        adapter = VeiculosEstacionadosAdapter(veiculo)
+        val veiculosEstacionados = VeiculosEstacionadosRepository(this).getListVeiculosEstacionados()
+        adapter = VeiculosEstacionadosAdapter(veiculosEstacionados)
         binding.recyclerViewVeiculosEstacionados.adapter = adapter
         binding.recyclerViewVeiculosEstacionados.layoutManager = LinearLayoutManager(this)
     }
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         override fun onReceive(aContext: Context?, aIntent: Intent?) {
             try {
                 when (aIntent?.action) {
-                    BroadcastVeiculosEstacionados.veiculosEstacionados -> {
+                    BroadcastVeiculosEstacionados.updateVeiculosEstacionados -> {
                         setupAdapter()
                     }
                 }
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun registerBroadcast() {
         val lIntentFilter = IntentFilter()
-        lIntentFilter.addAction(BroadcastVeiculosEstacionados.veiculosEstacionados)
+        lIntentFilter.addAction(BroadcastVeiculosEstacionados.updateVeiculosEstacionados)
         registerReceiver(mMyBroadCastReceiver, lIntentFilter)
     }
 
